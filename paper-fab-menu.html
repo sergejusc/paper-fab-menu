@@ -45,6 +45,7 @@
     <style is="custom-style">
         :host {
             width : 60px;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
         }
 
         :host .layout {
@@ -165,6 +166,7 @@
             listeners  : {
                 'mainFab.mouseover'   : 'open',
                 'mainFab.mouseout'    : 'close',
+                'mainFab.tap'         : 'toggle',
                 'mainItems.mouseover' : 'open',
                 'mainItems.mouseout'  : 'close'
             },
@@ -177,6 +179,11 @@
             },
             close      : function() {
                 this.show = false;
+            },
+            toggle      : function() {
+              setTimeout(function(){
+                this.show = !this.show;
+              }.bind(this), 10);
             }
         })
     </script>
